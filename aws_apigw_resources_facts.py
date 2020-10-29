@@ -31,11 +31,42 @@ EXAMPLES = r'''
 '''
 
 RETURN = r'''
-msg:
-  description: Message
-  returned: success
-  type: dict
-  sample: ''
+"resources": {
+    "items": [
+        {
+            "id": "bxiuwav2w6", 
+            "path": "/"
+        }, 
+        {
+            "id": "lkji07", 
+            "parent_id": "bzyuvav2w6", 
+            "path": "/v1", 
+            "path_part": "v1"
+        }, 
+        {
+            "id": "iaqbfq", 
+            "parent_id": "gkhi07", 
+            "path": "/v1/{proxy+}", 
+            "path_part": "{proxy+}", 
+            "resource_methods": {
+                "any": {}
+            }
+        }
+    ], 
+    "response_metadata": {
+        "http_headers": {
+            "connection": "keep-alive", 
+            "content-length": "253", 
+            "content-type": "application/json", 
+            "date": "Thu, 29 Oct 2020 08:46:09 GMT", 
+            "x-amz-apigw-id": "VKklvLBKiYcEd3A=", 
+            "x-amzn-requestid": "2cd6f4e6-c239-4502-8bda-01565ced2199"
+        }, 
+        "http_status_code": 200, 
+        "request_id": "2cd6f4e6-c239-4502-8bda-01565ced2199", 
+        "retry_attempts": 0
+    }
+}
 '''
 
 import json
@@ -69,7 +100,7 @@ def main():
     
     msg = camel_dict_to_snake_dict(get_resources(client, id))
 
-    exit_args['msg'] = camel_dict_to_snake_dict(msg)
+    exit_args['resources'] = camel_dict_to_snake_dict(msg)
     exit_args['changed'] = changed
 
     module.exit_json(**exit_args)
